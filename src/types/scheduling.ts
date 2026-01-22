@@ -3,7 +3,18 @@ export type TimeValue = {
     minute: number;  // 0–59
 };
 
+export type DateValue = {
+    day: number;     // 1–31
+    month: number;   // 1–12
+    year: number;    // YYYY
+};
+
 export type TimeSelectOption = {
     value: TimeValue;
-    label: string;        // "14:30"
+    label: string;
+};
+
+export type DateSelectOption = {
+    value: DateValue;
+    label: string;  // Formato: d/M/Y (ex: "22/1/2026")
 };

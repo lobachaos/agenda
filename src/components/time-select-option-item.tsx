@@ -8,7 +8,7 @@ interface TimeSelectOptionListProps {
 /**
  * Componente responsável por renderizar a lista de opções do TimeSelect
  */
-export const TimeSelectOptionList: React.FC<TimeSelectOptionListProps> = ({ options }) => {
+export const TimeSelectOptionItem: React.FC<TimeSelectOptionListProps> = ({ options }) => {
     return (
         <>
             {options.map(({ label }) => (

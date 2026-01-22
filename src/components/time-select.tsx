@@ -13,7 +13,7 @@ import {
     findOptionByLabel,
     formatSelectedValue
 } from "@/utils/time-select.utils";
-import {TimeSelectOptionList} from "./time-select-option-list";
+import {TimeSelectOptionItem} from "./time-select-option-item";
 
 interface TimeSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange'>, VariantProps<typeof timeSelectVariants> {
     value?: TimeValue;
@@ -55,7 +55,7 @@ export const TimeSelect: React.FC<TimeSelectProps> = ({
             {...props}
         >
             <option>{PLACEHOLDER_TEXT}</option>
-            <TimeSelectOptionList options={options}/>
+            <TimeSelectOptionItem options={options}/>
         </select>
     );
 }
