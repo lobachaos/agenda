@@ -12,6 +12,15 @@ export type DateValue = {
 export type TimeSelectOption = {
     value: TimeValue;
     label: string;
+    available?: boolean;  // true por padrão
+};
+
+export type TimePeriod = 'morning' | 'afternoon' | 'evening';
+
+export type TimeSlotGroup = {
+    period: TimePeriod;
+    label: string;  // "Manhã", "Tarde", "Noite"
+    slots: TimeSelectOption[];
 };
 
 export type DateSelectOption = {

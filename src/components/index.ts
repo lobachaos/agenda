@@ -1,5 +1,7 @@
 export { TimeSelect } from './time-select';
 export { TimeSelectOptionItem } from './time-select-option-item';
+export { TimeSlotPicker } from './time-slot-picker';
+export { TimeSlotButton } from './time-slot-button';
 export { DateSelect } from './date-select';
 export { DateSelectOptionItem } from './date-select-option-item';
 

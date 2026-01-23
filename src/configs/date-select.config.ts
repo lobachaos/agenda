@@ -8,7 +8,7 @@ export const dateSelectVariants = cva(
     {
         variants: {
             variant: {
-                default: 'bg-white border border-gray-300 hover:border-gray-400 text-yellow-400 dark:bg-zinc-800 dark:border-zinc-600 dark:hover:border-zinc-500',
+                default: 'bg-white border border-gray-300 hover:border-gray-400 text-gray-200 dark:bg-zinc-800 dark:border-zinc-600 dark:hover:border-zinc-500',
             }
         }
     }

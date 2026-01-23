@@ -48,14 +48,20 @@ export const TimeSelect: React.FC<TimeSelectProps> = ({
     };
 
     return (
-        <select
-            value={selectedValue}
-            onChange={handleChange}
-            className={`${timeSelectVariants({variant})} ${className || ''}`}
-            {...props}
-        >
-            <option>{PLACEHOLDER_TEXT}</option>
-            <TimeSelectOptionItem options={options}/>
-        </select>
+        <>
+            <label htmlFor="time-select"
+                   className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Selecione o horário
+            </label>
+            <select
+                value={selectedValue}
+                onChange={handleChange}
+                className={`${timeSelectVariants({variant})} ${className || ''}`}
+                {...props}
+            >
+                <option>{PLACEHOLDER_TEXT}</option>
+                <TimeSelectOptionItem options={options}/>
+            </select>
+        </>
     );
 }

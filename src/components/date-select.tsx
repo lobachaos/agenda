@@ -1,6 +1,6 @@
-import { VariantProps } from "class-variance-authority";
-import React, { useMemo } from "react";
-import { DateSelectOption, DateValue } from "@/types/scheduling";
+import {VariantProps} from "class-variance-authority";
+import React, {useMemo} from "react";
+import {DateSelectOption, DateValue} from "@/types/scheduling";
 import {
     dateSelectVariants,
     DEFAULT_START_DATE,
@@ -12,7 +12,7 @@ import {
     findDateOptionByLabel,
     formatSelectedDateValue
 } from "@/utils/date-select.utils";
-import { DateSelectOptionItem } from "./date-select-option-item";
+import {DateSelectOptionItem} from "./date-select-option-item";
 
 interface DateSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange'>, VariantProps<typeof dateSelectVariants> {
     value?: DateValue;
@@ -22,14 +22,14 @@ interface DateSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElem
 }
 
 export const DateSelect: React.FC<DateSelectProps> = ({
-    variant = 'default',
-    className,
-    onChange,
-    value,
-    startDate = DEFAULT_START_DATE,
-    daysAhead = DEFAULT_DAYS_AHEAD,
-    ...props
-}) => {
+                                                          variant = 'default',
+                                                          className,
+                                                          onChange,
+                                                          value,
+                                                          startDate = DEFAULT_START_DATE,
+                                                          daysAhead = DEFAULT_DAYS_AHEAD,
+                                                          ...props
+                                                      }) => {
     const options = useMemo<DateSelectOption[]>(
         () => generateDateOptions(startDate, daysAhead),
         [startDate, daysAhead]
@@ -45,14 +45,20 @@ export const DateSelect: React.FC<DateSelectProps> = ({
     };
 
     return (
-        <select
-            value={selectedValue}
-            onChange={handleChange}
-            className={`${dateSelectVariants({variant})} ${className || ''}`}
-            {...props}
-        >
-            <option>{PLACEHOLDER_TEXT}</option>
-            <DateSelectOptionItem options={options} />
-        </select>
+        <>
+            <label htmlFor="date-select"
+                   className="text-sm font-medium text-gray-200 dark:text-zinc-300">
+                Data
+            </label>
+            <select
+                value={selectedValue}
+                onChange={handleChange}
+                className={`${dateSelectVariants({variant})} ${className || ''}`}
+                {...props}
+            >
+                <option>{PLACEHOLDER_TEXT}</option>
+                <DateSelectOptionItem options={options}/>
+            </select>
+        </>
     );
 }
