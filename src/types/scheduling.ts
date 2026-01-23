@@ -23,6 +23,20 @@ export type TimeSlotGroup = {
     slots: TimeSelectOption[];
 };
 
+export type Appointment = {
+    id: string;
+    clientName: string;
+    time: TimeValue;
+    date: DateValue;
+    period: TimePeriod;
+};
+
+export type AppointmentsByPeriod = {
+    morning: Appointment[];
+    afternoon: Appointment[];
+    evening: Appointment[];
+};
+
 export type DateSelectOption = {
     value: DateValue;
     label: string;  // Formato: d/M/Y (ex: "22/1/2026")

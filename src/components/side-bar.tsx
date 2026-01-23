@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {List, ListIcon, X, XIcon} from "@phosphor-icons/react";
+import { List, X } from "@phosphor-icons/react";
 import { TimeValue, DateValue } from "@/types/scheduling";
 import { TimeSlotPicker, DateSelect } from "@/components";
 
@@ -30,9 +30,9 @@ export const SideBar: React.FC<SideBarProps> = ({
                 aria-label="Toggle menu"
             >
                 {isOpen ? (
-                    <XIcon size={24} weight="bold" />
+                    <X size={24} weight="bold" />
                 ) : (
-                    <ListIcon size={24} weight="bold" />
+                    <List size={24} weight="bold" />
                 )}
             </button>
 
