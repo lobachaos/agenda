@@ -1,12 +1,22 @@
-export { TimeSelect } from './time-select';
-export { TimeSelectOptionItem } from './time-select-option-item';
-export { TimeSlotPicker } from './time-slot-picker';
-export { TimeSlotButton } from './time-slot-button';
-export { DateSelect } from './date-select';
-export { DateSelectOptionItem } from './date-select-option-item';
-export { AppointmentItem } from './appointment-item';
-export { PeriodSection } from './period-section';
-export { DatePicker } from './date-picker';
+// Common components
+export { Button } from './common';
+export { EmptyState } from './common';
+
+// Agenda components
+export { AgendaHeader } from './agenda';
+export { AgendaContent } from './agenda';
+export { PeriodSection } from './agenda';
+export { AppointmentItem } from './agenda';
+
+// Scheduling components
+export { SideBar } from './scheduling';
+export { DateSelect } from './scheduling';
+export { DateSelectOptionItem } from './scheduling';
+export { DatePicker } from './scheduling';
+export { TimeSelect } from './scheduling';
+export { TimeSelectOptionItem } from './scheduling';
+export { TimeSlotPicker } from './scheduling';
+export { TimeSlotButton } from './scheduling';
 
 // Variants exports
 export { timeSelectVariants } from '@/configs/time-select.config';

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { List, X } from "@phosphor-icons/react";
-import { TimeValue, DateValue } from "@/types/scheduling";
-import { TimeSlotPicker, DateSelect } from "@/components";
+import React, {useState} from "react";
+import { ListIcon, XIcon } from "@phosphor-icons/react";
+import {TimeValue, DateValue} from "@/types/scheduling";
+import {TimeSlotPicker, DatePicker} from './index';
 
 interface SideBarProps {
     selectedDate?: DateValue;
@@ -11,11 +11,11 @@ interface SideBarProps {
 }
 
 export const SideBar: React.FC<SideBarProps> = ({
-    selectedDate,
-    onDateChange,
-    selectedTime,
-    onTimeChange,
-}) => {
+                                                    selectedDate,
+                                                    onDateChange,
+                                                    selectedTime,
+                                                    onTimeChange,
+                                                }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => setIsOpen(!isOpen);
@@ -30,9 +30,9 @@ export const SideBar: React.FC<SideBarProps> = ({
                 aria-label="Toggle menu"
             >
                 {isOpen ? (
-                    <X size={24} weight="bold" />
+                    <XIcon size={24} weight="bold"/>
                 ) : (
-                    <List size={24} weight="bold" />
+                    <ListIcon size={24} weight="bold"/>
                 )}
             </button>
 
@@ -68,10 +68,9 @@ export const SideBar: React.FC<SideBarProps> = ({
                     {/* Forms Section */}
                     <div className="flex flex-col gap-6 flex-1">
                         <div className="flex flex-col gap-4">
-                            <DateSelect
+                            <DatePicker
                                 value={selectedDate}
                                 onChange={onDateChange}
-                                daysAhead={30}
                             />
                         </div>
 

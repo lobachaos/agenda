@@ -5,7 +5,7 @@ import {
     groupOptionsByPeriod,
     formatSelectedValue,
 } from "@/utils/time-select.utils";
-import { TimeSlotButton } from "./time-slot-button";
+import { TimeSlotButton } from './index';
 
 interface TimeSlotPickerProps {
     value?: TimeValue;

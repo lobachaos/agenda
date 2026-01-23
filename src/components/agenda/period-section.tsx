@@ -1,7 +1,7 @@
 import React from "react";
-import {SunHorizonIcon, CloudSunIcon, MoonStarsIcon} from "@phosphor-icons/react";
+import {MoonStarsIcon, SunHorizonIcon, CloudSunIcon} from "@phosphor-icons/react";
 import {Appointment, TimePeriod} from "@/types/scheduling";
-import {AppointmentItem} from "./appointment-item";
+import {AppointmentItem} from './index';
 
 interface PeriodSectionProps {
     period: TimePeriod;
