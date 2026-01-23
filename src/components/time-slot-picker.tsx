@@ -45,7 +45,7 @@ export const TimeSlotPicker: React.FC<TimeSlotPickerProps> = ({
 
                 {groups.map(group => (
                     <div key={group.period} className="mb-6">
-                        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-400 mb-3">
+                        <h3 className="text-sm font-medium text-gray-300 mb-3">
                             {group.label}
                         </h3>
                         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">

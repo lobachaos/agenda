@@ -49,7 +49,7 @@ export const SideBar: React.FC<SideBarProps> = ({
                 className={`
                     fixed inset-y-0 left-0 z-40 
                     w-full sm:w-80 md:w-96 lg:w-80 xl:w-96
-                    bg-gray-900 dark:bg-gray-950 text-white
+                    bg-gray-700  text-white
                     transform transition-transform duration-300 ease-in-out
                     ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
                     md:relative md:inset-auto md:translate-x-0 md:transition-none
@@ -89,10 +89,10 @@ export const SideBar: React.FC<SideBarProps> = ({
 
                     {/* Footer CTA */}
                     <button
-                        className="w-full bg-yellow-400 text-gray-900 font-semibold py-2 px-4 rounded-lg hover:bg-yellow-300 transition-colors"
+                        className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-4 rounded-lg hover:bg-yellow-300 transition-colors"
                         onClick={closeSidebar}
                     >
-                        Agendar
+                        AGENDAR
                     </button>
                 </div>
             </aside>
