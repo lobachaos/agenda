@@ -1,5 +1,5 @@
 import React from "react";
-import { Appointment, AppointmentsByPeriod } from "@/types/scheduling";
+import { AppointmentsByPeriod } from "@/types/scheduling";
 import { PeriodSection } from './index';
 
 interface AgendaContentProps {

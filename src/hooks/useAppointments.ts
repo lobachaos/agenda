@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Appointment, DateValue, AppointmentsByPeriod } from "@/types/scheduling";
+import { useLocalStorage } from "./useLocalStorage";
 
 export const useAppointments = (initialData: Appointment[]) => {
+    const { data: storedAppointments, saveData, isLoaded } = useLocalStorage(initialData);
     const [appointments, setAppointments] = useState<Appointment[]>(initialData);
     const [agendaDate, setAgendaDate] = useState<DateValue>(() => {
         const today = new Date();
@@ -11,6 +13,13 @@ export const useAppointments = (initialData: Appointment[]) => {
             year: today.getFullYear(),
         };
     });
+
+    // Sincronizar com localStorage quando carregado
+    useEffect(() => {
+        if (isLoaded) {
+            setAppointments(storedAppointments);
+        }
+    }, [isLoaded, storedAppointments]);
 
     // Filtrar agendamentos pela data selecionada
     const filteredAppointments = useMemo(() => {
@@ -38,9 +47,23 @@ export const useAppointments = (initialData: Appointment[]) => {
     }, [filteredAppointments]);
 
     const handleDeleteAppointment = (appointmentId: string) => {
-        setAppointments((prev) =>
-            prev.filter((apt) => apt.id !== appointmentId)
+        const updated = appointments.filter((apt) => apt.id !== appointmentId);
+        setAppointments(updated);
+        saveData(updated);
+    };
+
+    const handleAddAppointment = (appointment: Appointment) => {
+        const updated = [...appointments, appointment];
+        setAppointments(updated);
+        saveData(updated);
+    };
+
+    const handleUpdateAppointment = (appointmentId: string, updates: Partial<Appointment>) => {
+        const updated = appointments.map((apt) =>
+            apt.id === appointmentId ? { ...apt, ...updates } : apt
         );
+        setAppointments(updated);
+        saveData(updated);
     };
 
     return {
@@ -51,5 +74,8 @@ export const useAppointments = (initialData: Appointment[]) => {
         filteredAppointments,
         appointmentsByPeriod,
         handleDeleteAppointment,
+        handleAddAppointment,
+        handleUpdateAppointment,
+        isLoaded,
     };
 };

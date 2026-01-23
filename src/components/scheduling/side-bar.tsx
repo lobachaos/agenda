@@ -8,6 +8,10 @@ interface SideBarProps {
     onDateChange?: (date: DateValue) => void;
     selectedTime?: TimeValue;
     onTimeChange?: (time: TimeValue) => void;
+    clientName?: string;
+    onClientNameChange?: (name: string) => void;
+    onCreateAppointment?: () => void;
+    unavailableSlots?: string[];
 }
 
 export const SideBar: React.FC<SideBarProps> = ({
@@ -15,6 +19,10 @@ export const SideBar: React.FC<SideBarProps> = ({
                                                     onDateChange,
                                                     selectedTime,
                                                     onTimeChange,
+                                                    clientName = '',
+                                                    onClientNameChange,
+                                                    onCreateAppointment,
+                                                    unavailableSlots = [],
                                                 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -68,6 +76,22 @@ export const SideBar: React.FC<SideBarProps> = ({
                     {/* Forms Section */}
                     <div className="flex flex-col gap-6 flex-1">
                         <div className="flex flex-col gap-4">
+                            <label className="text-sm font-medium text-gray-200">
+                                Nome do Cliente
+                            </label>
+                            <input
+                                type="text"
+                                value={clientName}
+                                onChange={(e) => onClientNameChange?.(e.target.value)}
+                                placeholder="Digite o nome do cliente"
+                                className="px-4 py-2 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:border-yellow-400"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-sm font-medium text-gray-200 mb-2 block">
+                                Data
+                            </label>
                             <DatePicker
                                 value={selectedDate}
                                 onChange={onDateChange}
@@ -75,21 +99,25 @@ export const SideBar: React.FC<SideBarProps> = ({
                         </div>
 
                         <div>
+                            <label className="text-sm font-medium text-gray-200 mb-2 block">
+                                Horário
+                            </label>
                             <TimeSlotPicker
                                 value={selectedTime}
                                 onChange={onTimeChange}
                                 step={30}
                                 startHour={8}
                                 endHour={21}
-                                unavailableSlots={["11:00", "13:00", "14:00", "16:00", "17:00"]}
+                                unavailableSlots={unavailableSlots}
                             />
                         </div>
                     </div>
 
                     {/* Footer CTA */}
                     <button
-                        className="w-full bg-yellow-400 text-gray-900 font-semibold py-4 px-4 rounded-lg hover:bg-yellow-300 transition-colors"
-                        onClick={closeSidebar}
+                        className="w-full bg-yellow-400 text-gray-900 font-semibold py-3 px-4 rounded-lg hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={onCreateAppointment}
+                        disabled={!selectedDate || !selectedTime || !clientName.trim()}
                     >
                         AGENDAR
                     </button>
